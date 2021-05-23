@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <style>
+    input[type=text]{
+      width:100%
+      border-radius: 4px;
+    }
+  </style>
+  </head>
+
+<body>
+<div style="width:500px; margin:50px auto" class="text-center border border-dark">
+<h3 class="alert alert-info">Add Article</h3>
+
+
+<%= form_with model: @article do |form| %>
+  <div>
+    <h3 class="alert alert-secondary mt-5"><%= form.label :title %></h3>
+    
+    <br>
+    
+    <%= form.text_field :title , :class => "form-control w-75 m-auto"%>
+    <% @article.errors.full_messages_for(:title).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+  <h3 class="alert alert-secondary mt-5"> <%= form.label :body%><br></h3>
+    <%= form.text_area :body , :class => "form-control w-75 m-auto" %>
+    <% @article.errors.full_messages_for(:body).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div class="mt-4 mb-5">
+    <%= form.submit :class => "btn btn-success" %>
+  </div>
+<% end %>
+</div>
+</body>
+</html>
