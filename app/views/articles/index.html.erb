@@ -11,7 +11,13 @@
 <div class="container">
 <div class="row">
   <h1 class="alert alert-info text-center w-75 m-auto mb-5">All Articles</h1>
-  <div class="btn btn-sm btn-secondary w-75 m-auto p-3 bg-light mb-3"> <%= link_to "New Article", new_article_path , :class=>"btn btn-success" %> </div>
+  <h1 class="alert alert-secondary text-center w-75 m-auto mb-5">
+  Our blog has <%= Article.public_count %> articles and counting!
+  </h1>
+
+
+  <div class="btn btn-secondary w-75 m-auto p-3 bg-light mb-3"> <%= link_to "New Article", new_article_path , :class=>"btn btn-success" %> </div>
+  
   <table class="table table-striped w-75 text-center m-auto">
     <thead>
       <tr>
@@ -26,6 +32,7 @@
     </thead>
     <tbody>
     <% @articles.each do |article| %>
+      <% unless article.archived? %>
       <tr>
         <th scope="row"><%= article.id %></th>
         <td>
@@ -37,12 +44,12 @@
         <td><%= article.created_at %></td>
         <td><%= article.updated_at %></td>
         <td>
-          <a class="btn btn-sm btn-outline-info" href="<%= article_path(article) %>">
+          <a class="btn btn-outline-info" href="<%= article_path(article) %>">
         View
         </a>
         </td>
         <td>
-        <p class="btn btn-sm btn-outline-danger"> <%= link_to "Delete", article_path(article),
+        <p class="btn btn-outline-danger"> <%= link_to "Delete", article_path(article),
         method: :delete,
         data: { confirm: "Are you sure?" } %></p>
 
@@ -50,17 +57,20 @@
         </td>
 
         <td>
-          <a class="btn btn-sm btn-outline-secondary" href="<%= edit_article_path(article) %>">
+          <a class="btn btn-outline-secondary" href="<%= edit_article_path(article) %>">
         Edit
         </a>
         </td>
       </tr>
+    <% end %>
     <% end %>
     </tbody>
   </table>
 
   </div>
 </div>
+
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 
 </body>
