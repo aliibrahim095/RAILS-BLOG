@@ -10,11 +10,25 @@
 
 <body>
 <div style="width:500px; margin:50px auto">
-<h1 class="alert alert-info text-center">Article<h1>
+<h1 class="alert alert-info text-center">View One Article<h1>
 
 <h1 class="alert alert-secondary text-center"><%= @article.title %></h1>
 
 <p class="alert alert-secondary text-center p-5"><%= @article.body %></p>
+
+
+<ul>
+  <li><%= link_to "Edit", edit_article_path(@article) %></li>
+  <li><%= link_to "Destroy", article_path(@article),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } %></li>
+</ul>
+
+<%= render @article.comments %>
+
+<hr/>
+
+<%= render 'comments/form' %>
 
 </body>
 </html>

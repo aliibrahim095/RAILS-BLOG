@@ -37,12 +37,12 @@
         <td><%= article.created_at %></td>
         <td><%= article.updated_at %></td>
         <td>
-          <a class="btn btn-outline-info" href="<%= article_path(article) %>">
+          <a class="btn btn-sm btn-outline-info" href="<%= article_path(article) %>">
         View
         </a>
         </td>
         <td>
-        <p class="btn btn-outline-danger"> <%= link_to "Delete", article_path(article),
+        <p class="btn btn-sm btn-outline-danger"> <%= link_to "Delete", article_path(article),
         method: :delete,
         data: { confirm: "Are you sure?" } %></p>
 
@@ -50,7 +50,7 @@
         </td>
 
         <td>
-          <a class="btn btn-outline-secondary" href="<%= edit_article_path(article) %>">
+          <a class="btn btn-sm btn-outline-secondary" href="<%= edit_article_path(article) %>">
         Edit
         </a>
         </td>
